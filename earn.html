@@ -187,28 +187,32 @@
   const STORAGE_KEY = 'kliptok_easter_egg';
   const TIME_KEY = 'kliptok_easter_time';
 
-  logo.addEventListener('click', function () {
-    const now = Date.now();
-    const lastTime = Number(sessionStorage.getItem(TIME_KEY) || 0);
+ logo.addEventListener('click', function (event) {
+  const now = Date.now();
+  const lastTime = Number(sessionStorage.getItem(TIME_KEY) || 0);
 
-    let clicks = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+  let clicks = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
 
-    // Если прошло больше 15 секунд, начинаем считать заново
-    if (now - lastTime > 15000) {
-      clicks = 0;
-    }
+  if (now - lastTime > 15000) {
+    clicks = 0;
+  }
 
-    clicks++;
-    sessionStorage.setItem(STORAGE_KEY, clicks);
-    sessionStorage.setItem(TIME_KEY, now);
+  clicks++;
 
-    if (clicks >= 5) {
-      sessionStorage.removeItem(STORAGE_KEY);
-      sessionStorage.removeItem(TIME_KEY);
+  sessionStorage.setItem(STORAGE_KEY, clicks);
+  sessionStorage.setItem(TIME_KEY, now);
 
-      sessionStorage.setItem('kliptok_show_secret', 'yes');
-    }
-  });
+  if (clicks >= 5) {
+    event.preventDefault();
+
+    sessionStorage.removeItem(STORAGE_KEY);
+    sessionStorage.removeItem(TIME_KEY);
+
+    sessionStorage.setItem('kliptok_show_secret', 'yes');
+
+    window.location.href = logo.href;
+  }
+});
 
   // Показываем послание после пятого нажатия
   if (sessionStorage.getItem('kliptok_show_secret') === 'yes') {
