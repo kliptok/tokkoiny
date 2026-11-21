@@ -80,6 +80,72 @@
     </div>
 
   </main>
+<script>
+(function () {
+  const logo = document.querySelector('.brand');
+  if (!logo) return;
 
+  const STORAGE_KEY = 'kliptok_easter_egg';
+  const TIME_KEY = 'kliptok_easter_time';
+
+  logo.addEventListener('click', function () {
+    const now = Date.now();
+    const lastTime = Number(sessionStorage.getItem(TIME_KEY) || 0);
+
+    let clicks = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+
+    // Если прошло больше 15 секунд, начинаем считать заново
+    if (now - lastTime > 15000) {
+      clicks = 0;
+    }
+
+    clicks++;
+    sessionStorage.setItem(STORAGE_KEY, clicks);
+    sessionStorage.setItem(TIME_KEY, now);
+
+    if (clicks >= 5) {
+      sessionStorage.removeItem(STORAGE_KEY);
+      sessionStorage.removeItem(TIME_KEY);
+
+      sessionStorage.setItem('kliptok_show_secret', 'yes');
+    }
+  });
+
+  // Показываем послание после пятого нажатия
+  if (sessionStorage.getItem('kliptok_show_secret') === 'yes') {
+    sessionStorage.removeItem('kliptok_show_secret');
+
+    const popup = document.createElement('div');
+    popup.innerHTML = `
+      <div class="anton-secret-overlay">
+        <div class="anton-secret-box">
+          <div class="anton-secret-icon">🐈‍⬛</div>
+          <div class="anton-secret-title">Секретное послание!</div>
+          <p>
+            Мяу! Ты нашёл мою тайну! 💜
+            <br><br>
+            Не каждый знает, что на сайте KlipTok
+            спрятаны секреты. Но теперь ты один из посвящённых!
+          </p>
+          <div class="anton-secret-sign">Твой котик Антон ✨</div>
+          <button class="anton-secret-close">Забрать секрет себе</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    popup.querySelector('.anton-secret-close').onclick = function () {
+      popup.remove();
+    };
+
+    popup.querySelector('.anton-secret-overlay').onclick = function (event) {
+      if (event.target.classList.contains('anton-secret-overlay')) {
+        popup.remove();
+      }
+    };
+  }
+})();
+</script>
 </body>
 </html>
