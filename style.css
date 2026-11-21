@@ -1238,3 +1238,76 @@ button, input, select { -webkit-tap-highlight-color:transparent; }
     min-height: 170px;
   }
 }
+.anton-secret-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 3, 22, 0.85);
+  backdrop-filter: blur(8px);
+  animation: antonFade .3s ease;
+}
+
+.anton-secret-box {
+  width: 100%;
+  max-width: 390px;
+  padding: 30px 24px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(145deg, #351653, #190b2c);
+  border: 1px solid #bd70e8;
+  border-radius: 24px;
+  box-shadow: 0 0 40px #a64bd966;
+  animation: antonAppear .4s ease;
+}
+
+.anton-secret-icon {
+  font-size: 55px;
+  margin-bottom: 12px;
+}
+
+.anton-secret-title {
+  color: #f0baff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.anton-secret-box p {
+  color: #e8d9f5;
+  line-height: 1.65;
+}
+
+.anton-secret-sign {
+  margin: 20px 0;
+  color: #e9b5ff;
+  font-weight: bold;
+}
+
+.anton-secret-close {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #a84ed1, #e16bb7);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes antonFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes antonAppear {
+  from {
+    opacity: 0;
+    transform: scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
