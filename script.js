@@ -210,6 +210,22 @@
       ]
     },
 
+    // ===== ИНТЕРЬЕР «LUVANDI» =====
+
+    {
+      name: 'Интерьер «Luvandi»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      items: [
+        'Фонарики «Luvandi»',
+        'Настенное украшение «Luvandi»',
+        'Настольное украшение «Luvandi»',
+        'Окно «Luvandi»',
+        'Стол «Luvandi»'
+      ]
+    },
+
     // ===== ОДЕЖДА =====
 
     {
@@ -336,6 +352,19 @@
       category: 'unique'
     }
   ];
+
+  // ===== ПРИНУДИТЕЛЬНО ОСТАВЛЯЕМ ТОЛЬКО 4 НОВИНКИ =====
+
+  const newProducts = new Set([
+    'Картина «GLAM»',
+    'Кресло «Каблук Любы»',
+    'Тапочки «BWA»',
+    'Эффект «Alter Axel»'
+  ]);
+
+  products.forEach(product => {
+    product.isNew = newProducts.has(product.name);
+  });
 
   // ===== ИКОНКИ КАТЕГОРИЙ =====
 
