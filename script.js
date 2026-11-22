@@ -1,4 +1,3 @@
-
 (() => {
   // ===== НАВИГАЦИЯ =====
 
@@ -35,7 +34,6 @@
 
   const products = [
     // ===== НОВИНКИ =====
-
     {
       name: 'Картина «GLAM»',
       price: 666,
@@ -65,306 +63,142 @@
       isNew: true
     },
 
-    // ===== ОСТАЛЬНЫЕ ТОВАРЫ =====
+    // ===== КОЛЛЕКЦИЯ «NO PARTIES» =====
+    { name: 'Шуба «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Очки «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Шапка «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Штаны «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Блузка «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Ботинки «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
 
+    // ===== КОЛЛЕКЦИЯ «КЛИПТОК» =====
     {
-      name: 'Светлая накидка «Аксель»',
-      price: 449,
-      image: 'images/IMG_9321.webp',
-      category: 'axel'
-    },
-    {
-      name: 'Тёмная накидка «Аксель»',
-      price: 449,
-      image: 'images/IMG_9320.webp',
-      category: 'axel'
+      name: 'Интерьер «Эй, Клипток!»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'kliptok',
+      items: [
+        'Большой стеллаж «Эй, Клипток!»',
+        'Диван «Эй, Клипток!»',
+        'Дверь «Эй, Клипток!»',
+        'Журнальный столик «Эй, Клипток!»',
+        'Картина с Антоном «Эй, Клипток!»',
+        'Картина с самолетом «Эй, Клипток!»',
+        'Компьютер «Эй, Клипток!»',
+        'Кулер с Акселем «Эй, Клипток!»',
+        'Куча носков «Эй, Клипток!»',
+        'Мяч для регби «Эй, Клипток!»',
+        'Окно «Эй, Клипток!»',
+        'Панорамная крыша «Эй, Клипток!»',
+        'Пол «Эй, Клипток!»',
+        'Полка настенная «Эй, Клипток!»',
+        'Потолочные светильники «Эй, Клипток!»',
+        'Пуф «Эй, Клипток!»',
+        'Радиатор «Эй, Клипток!»',
+        'Скейтборд «Эй, Клипток!»',
+        'Стакан с карандашами «Эй, Клипток!»',
+        'Стационарный телефон «Эй, Клипток!»',
+        'Стены «Эй, Клипток!»',
+        'Стол «Эй, Клипток!»',
+        'Стул «Эй, Клипток!»',
+        'Фигурка динозавра Тренди «Эй, Клипток!»',
+        'Фигурка Иннокентия «Эй, Клипток!»',
+        'Фигурка планеты «Эй, Клипток!»',
+        'Цветок «Эй, Клипток!»',
+        'Цветок в горшке «Эй, Клипток!»',
+        'Часы настенные «Эй, Клипток!»',
+        'Кровать «Эй, Клипток!»'
+      ]
     },
     {
       name: 'Фотодоска «Клипток»',
       price: 250,
       image: 'images/IMG_9311.webp',
-      category: 'furniture'
-    },
-    {
-      name: 'Сумка доставщика «Onion»',
-      price: 435,
-      image: 'images/IMG_9312.webp',
-      category: 'clothes'
-    },
-    {
-      name: 'Лонгслив «Крысиная любовь»',
-      price: 450,
-      image: 'images/IMG_9310.webp',
-      category: 'clothes'
-    },
-    {
-      name: 'Клипбокс',
-      price: 599,
-      image: 'images/IMG_9309.webp',
-      category: 'unique'
-    },
-    {
-      name: 'Шапка «Аксель»',
-      price: 333,
-      image: 'images/IMG_9313.webp',
-      category: 'axel'
-    },
-    {
-      name: 'Наушники «Аксель»',
-      price: 444,
-      image: 'images/IMG_9314.webp',
-      category: 'axel'
-    },
-    {
-      name: 'Шапка бини «Star shine»',
-      price: 250,
-      image: 'images/IMG_9319.webp',
-      category: 'star-shine'
-    },
-    {
-      name: 'Очки «Star shine»',
-      price: 200,
-      image: 'images/IMG_9315.webp',
-      category: 'star-shine'
-    },
-    {
-      name: 'Серьга «Star shine»',
-      price: 150,
-      image: 'images/IMG_9318.webp',
-      category: 'star-shine'
-    },
-    {
-      name: 'Лонгслив «Star shine»',
-      price: 550,
-      image: 'images/IMG_9317.webp',
-      category: 'star-shine'
-    },
-    {
-      name: 'Штаны «Star shine»',
-      price: 300,
-      image: 'images/IMG_9316.webp',
-      category: 'star-shine'
-    },
-    {
-      name: 'Кеды «Star shine»',
-      price: 250,
-      image: 'images/IMG_9322.webp',
-      category: 'star-shine'
+      category: 'kliptok'
     },
     {
       name: 'Вывеска «Клипток»',
       displayPrice: 'Участие в конкурсах',
       image: null,
-      category: 'furniture'
-    },
-    {
-      name: 'Кольцевая лампа',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'furniture'
-    },
-    {
-      name: 'Декор «Аксель»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'furniture'
+      category: 'kliptok'
     },
 
-    // ===== ИНТЕРЬЕР «ЭЙ, КЛИПТОК!» =====
+    // ===== КОЛЛЕКЦИЯ «STAR SHINE» =====
+    { name: 'Кеды «Star Shine»', price: 250, image: 'images/IMG_9322.webp', category: 'star-shine' },
+    { name: 'Очки «Star Shine»', price: 200, image: 'images/IMG_9315.webp', category: 'star-shine' },
+    { name: 'Лонгслив «Star Shine»', price: 550, image: 'images/IMG_9317.webp', category: 'star-shine' },
+    { name: 'Шапка бини «Star Shine»', price: 250, image: 'images/IMG_9319.webp', category: 'star-shine' },
+    { name: 'Серьга «Star Shine»', price: 150, image: 'images/IMG_9318.webp', category: 'star-shine' },
+    { name: 'Штаны «Star Shine»', price: 300, image: 'images/IMG_9316.webp', category: 'star-shine' },
 
-    {
-      name: 'Интерьер «Эй, Клипток!»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'furniture',
-      items: [
-'Большой стеллаж «Эй, Клипток!»',
-'Диван «Эй, Клипток!»',
-'Дверь «Эй, Клипток!»',
-'Журнальный столик «Эй, Клипток!»',
-'Картина с Антоном «Эй, Клипток!»',
-'Картина с самолетом «Эй, Клипток!»',
-'Компьютер «Эй, Клипток!»',
-'Кулер с Акселем «Эй, Клипток!»',
-'Куча носков «Эй, Клипток!»',
-'Мяч для регби «Эй, Клипток!»',
-'Окно «Эй, Клипток!»',
-'Панорамная крыша «Эй, Клипток!»',
-'Пол «Эй, Клипток!»',
-'Полка настенная «Эй, Клипток!»',
-'Потолочные светильники «Эй, Клипток!»',
-'Пуф «Эй, Клипток!»',
-'Радиатор «Эй, Клипток!»',
-'Скейтборд «Эй, Клипток!»',
-'Стакан с карандашами «Эй, Клипток!»',
-'Стационарный телефон «Эй, Клипток!»',
-'Стены «Эй, Клипток!»',
-'Стол «Эй, Клипток!»',
-'Стул «Эй, Клипток!»',
-'Фигурка динозавра Тренди «Эй, Клипток!»',
-'Фигурка Иннокентия «Эй, Клипток!»',
-'Фигурка планеты «Эй, Клипток!»',
-'Цветок «Эй, Клипток!»',
-'Цветок в горшке «Эй, Клипток!»',
-'Часы настенные «Эй, Клипток!»',
-'Кровать «Эй, Клипток!»'
-      ]
-    },
-
-    // ===== ИНТЕРЬЕР «LUVANDI» =====
-
+    // ===== КОЛЛЕКЦИЯ «LUVANDI» =====
     {
       name: 'Интерьер «Luvandi»',
       displayPrice: 'Участие в конкурсах',
       image: null,
-      category: 'furniture',
+      category: 'luvandi',
       items: [
-'Фонарики «Luvandi»',
-'Настенное украшение «Luvandi»',
-'Настольное украшение «Luvandi»',
-'Окно «Luvandi»',
-'Стол «Luvandi»',
-'Пуф «Luvandi»',
-'Тарелка «Luvandi»',
-'Рождественский венок «Luvandi»',
-'Светодиодная лента «Luvandi»',
-'Свечи «Luvandi»',
-'Свечи декоративные «Luvandi»',
-'Кресло зелёное «Luvandi»',
-'Кресло фиолетовое «Luvandi»',
-'Диван «Luvandi»',
-'Камин «Luvandi»',
-'Чашка зелёная «Luvandi»',
-'Чашка фиолетовая «Luvandi»',
-'Ёлка «Luvandi»'
+        'Фонарики «Luvandi»',
+        'Настенное украшение «Luvandi»',
+        'Настольное украшение «Luvandi»',
+        'Окно «Luvandi»',
+        'Стол «Luvandi»',
+        'Пуф «Luvandi»',
+        'Тарелка «Luvandi»',
+        'Рождественский венок «Luvandi»',
+        'Светодиодная лента «Luvandi»',
+        'Свечи «Luvandi»',
+        'Свечи декоративные «Luvandi»',
+        'Кресло зелёное «Luvandi»',
+        'Кресло фиолетовое «Luvandi»',
+        'Диван «Luvandi»',
+        'Камин «Luvandi»',
+        'Чашка зелёная «Luvandi»',
+        'Чашка фиолетовая «Luvandi»',
+        'Ёлка «Luvandi»'
       ]
     },
+    { name: 'Шапка «Luvandi»', displayPrice: 'Участие в конкурсах', image: null, category: 'luvandi' },
+    { name: 'Бенгальский огонь «Luvandi»', displayPrice: 'Участие в конкурсах', image: null, category: 'luvandi' },
 
-    // ===== ОДЕЖДА =====
+    // ===== КОЛЛЕКЦИЯ «LOSER CORE» =====
+    { name: 'Свитер «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
+    { name: 'Юбка «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
+    { name: 'Чулки «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
+    { name: 'Обувь «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
+    { name: 'Сумка «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
 
-    {
-      name: 'Майка «TikTok»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Кот «Антон»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Худи «Аксель»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Шапка «Luvandi»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Бенгальский огонь «Luvandi»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Костюм динозавра «Тренди»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
-    {
-      name: 'Пикми-указка «Гламур»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'clothes'
-    },
+    // ===== КОЛЛЕКЦИЯ «АКСЕЛЬ» =====
+    { name: 'Наушники «Аксель»', price: 444, image: 'images/IMG_9314.webp', category: 'axel' },
+    { name: 'Худи «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
+    { name: 'Шапка «Аксель»', price: 333, image: 'images/IMG_9313.webp', category: 'axel' },
+    { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.webp', category: 'axel' },
+    { name: 'Баллун «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
+    { name: 'Декор «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
+    { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel' },
 
-    // ===== КОСТЮМ «LOSER CORE» =====
+    // ===== ЭЛЕМЕНТЫ МЕБЕЛИ =====
+    { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.webp', category: 'furniture', isNew: true },
+    { name: 'Картина «GLAM»', price: 666, image: 'images/Kartina3-converted-compressed.webp', category: 'furniture', isNew: true },
+    { name: 'Авапака Мартин', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
+    { name: 'Кольцевая лампа', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
 
-    {
-      name: 'Свитер «Loser Core»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'loser-core'
-    },
-    {
-      name: 'Юбка «Loser Core»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'loser-core'
-    },
-    {
-      name: 'Чулки «Loser Core»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'loser-core'
-    },
-    {
-      name: 'Ботинки «Loser Core»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'loser-core'
-    },
-    {
-      name: 'Сумка «Loser Core»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'loser-core'
-    },
+    // ===== ЭЛЕМЕНТЫ ОДЕЖДЫ =====
+    { name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
+    { name: 'Эффект «Alter Axel»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes', isNew: true },
+    { name: 'Майка «Bunt House»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Майка «TikTok»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.webp', category: 'clothes' },
+    { name: 'Костюм динозавра «Тренди»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Сумка доставщика «Onion»', price: 435, image: 'images/IMG_9312.webp', category: 'clothes' },
+    { name: 'Кот «Антон»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Пикми-палка «Гламур»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
 
-    // ===== КОСТЮМ «NO PARTIES» =====
-
-    {
-      name: 'Шуба «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-    {
-      name: 'Очки «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-    {
-      name: 'Шапка «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-    {
-      name: 'Штаны «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-    {
-      name: 'Блузка «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-    {
-      name: 'Ботинки «No parties»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'no-parties'
-    },
-
-    // ===== УНИКАЛЬНОЕ =====
-
-    {
-      name: 'Танец «swaga»',
-      displayPrice: 'Участие в конкурсах',
-      image: null,
-      category: 'unique'
-    }
+    // ===== ПРОЧЕЕ =====
+    { name: 'Танец «swaga»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
+    { name: 'Граффити «Ну мы?»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
+    { name: 'Граффити «Покрысим?»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
+    { name: 'Клипбокс', price: 599, image: 'images/IMG_9309.webp', category: 'unique' }
   ];
 
   // ===== ПРИНУДИТЕЛЬНО ОСТАВЛЯЕМ ТОЛЬКО 4 НОВИНКИ =====
@@ -389,6 +223,8 @@
     'star-shine': '✧',
     'loser-core': '🖤',
     'no-parties': '✨',
+    kliptok: '🎬',
+    luvandi: '🎄',
     unique: '💎'
   };
 
