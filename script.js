@@ -178,14 +178,10 @@
     { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel' },
 
     // ===== ЭЛЕМЕНТЫ МЕБЕЛИ =====
-    { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.webp', category: 'furniture', isNew: true },
-    { name: 'Картина «GLAM»', price: 666, image: 'images/Kartina3-converted-compressed.webp', category: 'furniture', isNew: true },
     { name: 'Авапака Мартин', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
     { name: 'Кольцевая лампа', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
 
     // ===== ЭЛЕМЕНТЫ ОДЕЖДЫ =====
-    { name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
-    { name: 'Эффект «Alter Axel»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes', isNew: true },
     { name: 'Майка «Bunt House»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
     { name: 'Майка «TikTok»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
     { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.webp', category: 'clothes' },
