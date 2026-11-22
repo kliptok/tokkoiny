@@ -1311,3 +1311,44 @@ button, input, select { -webkit-tap-highlight-color:transparent; }
     transform: scale(1);
   }
 }
+
+/* Раскрывающийся список предметов интерьера */
+
+.product-details {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(180, 140, 255, 0.2);
+}
+
+.product-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #b99aff;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.product-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.product-details summary::after {
+  content: '+';
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.product-details[open] summary::after {
+  content: '−';
+}
+
+.product-details-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.8;
+}
