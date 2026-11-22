@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <meta name="description" content="Открой Клипбокс в фан-проекте Аватарский KlipTok и испытай удачу.">
+  <title>Клипбокс | ТокКоины</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .wheel-page {
+      width: min(100% - 30px, 900px);
+      margin: 35px auto;
+      text-align: center;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 11px 22px;
+      border: 1px solid #9366bd;
+      border-radius: 10px;
+      color: #f2c5ff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .back-home:hover {
+      background: #492568;
+      border-color: #d78cff;
+      transform: translateY(-2px);
+    }
+
+    .wheel-frame {
+      width: 100%;
+      min-height: 720px;
+      border: 1px solid #7043a0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #170b2d;
+    }
+
+    .wheel-frame iframe {
+      display: block;
+      width: 100%;
+      height: 720px;
+      border: 0;
+    }
+
+    @media (max-width: 600px) {
+      .wheel-frame,
+      .wheel-frame iframe {
+        min-height: 780px;
+        height: 780px;
+      }
+    }
+  </style>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Клипбокс | ТокКоины">
+  <meta property="og:description" content="Открой Клипбокс в фан-проекте Аватарский KlipTok и испытай удачу.">
+  <meta property="og:locale" content="ru_RU">
+</head>
+
+<body>
+<a class="skip-link" href="#mainContent">Перейти к содержимому</a>
+
+  <header class="site-header wheel-header">
+    <a class="brand" href="index.html"><img src="images/tokcoin.webp" alt="" class="brand-coin"><span>Аватарский KlipTok | накопительная система</span></a>
+    <a class="back-home" href="index.html">← На главную</a>
+  </header>
+  <main class="wheel-page">
+
+    <h1>Скорее открой подарок!</h1>
+    <p>Испытай удачу и получи свой приз!</p>
+
+    <div class="wheel-frame">
+      <iframe
+        src="https://script.google.com/macros/s/AKfycbyDz_Gq1Zz_5ZTL1SllLeJV0CNLbZ1BalijphLYxo42WWk6vd04W6at1Bi0s0tOOpaJ/exec"
+        title="Колесо фортуны"
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html">Аватарский KlipTok</a>
+    <nav aria-label="Ссылки в подвале">
+      <a href="earn.html">ТокКоины</a><a href="shop.html">Магазин</a><a href="promo.html">Промокоды</a><a href="winners.html">Победители</a><a href="faq.html">FAQ</a>
+    </nav>
+    <p>Фан-проект сообщества. Не является официальным продуктом игры «Аватария».</p>
+  </div>
+</footer>
+</body>
+</html>
