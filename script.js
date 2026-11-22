@@ -1,7 +1,7 @@
-// Общая навигация + каталог магазина.
-// Изображения товаров подключены из папки images.
 
 (() => {
+  // ===== НАВИГАЦИЯ =====
+
   const menuButton = document.querySelector('.menu-toggle');
   const header = document.querySelector('.site-header');
 
@@ -9,7 +9,10 @@
     menuButton.addEventListener('click', () => {
       const isOpen = header.classList.toggle('nav-open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+      menuButton.setAttribute(
+        'aria-label',
+        isOpen ? 'Закрыть меню' : 'Открыть меню'
+      );
     });
 
     document.addEventListener('keydown', event => {
@@ -28,35 +31,330 @@
     });
   }
 
+  // ===== КАТАЛОГ ТОВАРОВ =====
+
   const products = [
-  { name: 'Картина «GLAM»', price: 666, image: 'images/Kartina3-converted-compressed.webp', category: 'furniture', isNew: true },
-{ name: 'Тапочки «BWA»', price: 585, image: 'images/IMG_9324.webp', category: 'clothes', isNew: true },
-    { name: 'Кресло «Каблук Любы»', price: 483, image: 'images/IMG_9323.webp', category: 'furniture', isNew: true },
-    { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.webp', category: 'axel', isNew: false },
-    { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel', isNew: false },
-    { name: 'Фотодоска «Клипток»', price: 250, image: 'images/IMG_9311.webp', category: 'furniture', isNew: false },
-    { name: 'Сумка доставщика «Onion»', price: 435, image: 'images/IMG_9312.webp', category: 'clothes', isNew: false },
-    { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.webp', category: 'clothes', isNew: false },
-    { name: 'Клипбокс', price: 599, image: 'images/IMG_9309.webp', category: 'unique', isNew: false },
-    { name: 'Шапка «Аксель»', price: 333, image: 'images/IMG_9313.webp', category: 'axel', isNew: false },
-    { name: 'Наушники «Аксель»', price: 444, image: 'images/IMG_9314.webp', category: 'axel', isNew: false },
-    { name: 'Шапка бини «Star shine»', price: 250, image: 'images/IMG_9319.webp', category: 'star-shine', isNew: false },
-    { name: 'Очки «Star shine»', price: 200, image: 'images/IMG_9315.webp', category: 'star-shine', isNew: false },
-    { name: 'Серьга «Star shine»', price: 150, image: 'images/IMG_9318.webp', category: 'star-shine', isNew: false },
-    { name: 'Лонгслив «Star shine»', price: 550, image: 'images/IMG_9317.webp', category: 'star-shine', isNew: false },
-    { name: 'Штаны «Star shine»', price: 300, image: 'images/IMG_9316.webp', category: 'star-shine', isNew: false },
-    { name: 'Кеды «Star shine»', price: 250, image: 'images/IMG_9322.webp', category: 'star-shine', isNew: false }
+    // СТАРЫЕ ТОВАРЫ
+
+    {
+      name: 'Картина «GLAM»',
+      price: 666,
+      image: 'images/Kartina3-converted-compressed.webp',
+      category: 'furniture',
+      isNew: true
+    },
+    {
+      name: 'Тапочки «BWA»',
+      price: 585,
+      image: 'images/IMG_9324.webp',
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Кресло «Каблук Любы»',
+      price: 483,
+      image: 'images/IMG_9323.webp',
+      category: 'furniture',
+      isNew: true
+    },
+    {
+      name: 'Светлая накидка «Аксель»',
+      price: 449,
+      image: 'images/IMG_9321.webp',
+      category: 'axel'
+    },
+    {
+      name: 'Тёмная накидка «Аксель»',
+      price: 449,
+      image: 'images/IMG_9320.webp',
+      category: 'axel'
+    },
+
+    // Фотодоска уже была в каталоге.
+    // Обновляем её, а не создаём дубликат.
+
+    {
+      name: 'Фотодоска «Клипток»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      isNew: true
+    },
+
+    {
+      name: 'Сумка доставщика «Onion»',
+      price: 435,
+      image: 'images/IMG_9312.webp',
+      category: 'clothes'
+    },
+    {
+      name: 'Лонгслив «Крысиная любовь»',
+      price: 450,
+      image: 'images/IMG_9310.webp',
+      category: 'clothes'
+    },
+    {
+      name: 'Клипбокс',
+      price: 599,
+      image: 'images/IMG_9309.webp',
+      category: 'unique'
+    },
+    {
+      name: 'Шапка «Аксель»',
+      price: 333,
+      image: 'images/IMG_9313.webp',
+      category: 'axel'
+    },
+    {
+      name: 'Наушники «Аксель»',
+      price: 444,
+      image: 'images/IMG_9314.webp',
+      category: 'axel'
+    },
+    {
+      name: 'Шапка бини «Star shine»',
+      price: 250,
+      image: 'images/IMG_9319.webp',
+      category: 'star-shine'
+    },
+    {
+      name: 'Очки «Star shine»',
+      price: 200,
+      image: 'images/IMG_9315.webp',
+      category: 'star-shine'
+    },
+    {
+      name: 'Серьга «Star shine»',
+      price: 150,
+      image: 'images/IMG_9318.webp',
+      category: 'star-shine'
+    },
+    {
+      name: 'Лонгслив «Star shine»',
+      price: 550,
+      image: 'images/IMG_9317.webp',
+      category: 'star-shine'
+    },
+    {
+      name: 'Штаны «Star shine»',
+      price: 300,
+      image: 'images/IMG_9316.webp',
+      category: 'star-shine'
+    },
+    {
+      name: 'Кеды «Star shine»',
+      price: 250,
+      image: 'images/IMG_9322.webp',
+      category: 'star-shine'
+    },
+
+    // ===== НОВАЯ МЕБЕЛЬ =====
+
+    {
+      name: 'Вывеска «Клипток»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      isNew: true
+    },
+    {
+      name: 'Кольцевая лампа',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      isNew: true
+    },
+    {
+      name: 'Декор «Аксель»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      isNew: true
+    },
+
+    // ===== ИНТЕРЬЕР «ЭЙ, КЛИПТОК!» =====
+
+    {
+      name: 'Интерьер «Эй, Клипток!»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'furniture',
+      isNew: true,
+      items: [
+        'Фотодоска «Клипток»',
+        'Вывеска «Клипток»',
+        'Кольцевая лампа',
+        'Декор «Аксель»'
+      ]
+    },
+
+    // ===== ОДЕЖДА =====
+
+    {
+      name: 'Майка «TikTok»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Кот «Антон»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Эффект «Alter Axel»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Худи «Аксель»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Шапка «Luvandi»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Бенгальский огонь «Luvandi»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Костюм динозавра «Тренди»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+    {
+      name: 'Пикми-указка «Гламур»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'clothes',
+      isNew: true
+    },
+
+    // ===== КОСТЮМ «LOSER CORE» =====
+
+    {
+      name: 'Свитер «Loser Core»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'loser-core',
+      isNew: true
+    },
+    {
+      name: 'Юбка «Loser Core»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'loser-core',
+      isNew: true
+    },
+    {
+      name: 'Чулки «Loser Core»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'loser-core',
+      isNew: true
+    },
+    {
+      name: 'Ботинки «Loser Core»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'loser-core',
+      isNew: true
+    },
+    {
+      name: 'Сумка «Loser Core»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'loser-core',
+      isNew: true
+    },
+
+    // ===== КОСТЮМ «NO PARTIES» =====
+
+    {
+      name: 'Шуба «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+    {
+      name: 'Очки «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+    {
+      name: 'Шапка «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+    {
+      name: 'Штаны «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+    {
+      name: 'Блузка «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+    {
+      name: 'Ботинки «No parties»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'no-parties',
+      isNew: true
+    },
+
+    // ===== УНИКАЛЬНОЕ =====
+
+    {
+      name: 'Танец «swaga»',
+      displayPrice: 'Участие в конкурсах',
+      image: null,
+      category: 'unique',
+      isNew: true
+    }
   ];
+
+  // ===== ИКОНКИ КАТЕГОРИЙ =====
 
   const categoryIcons = {
     clothes: '👕',
     furniture: '🪑',
     axel: '✦',
     'star-shine': '✧',
+    'loser-core': '🖤',
+    'no-parties': '✨',
     unique: '💎'
   };
 
   const grid = document.getElementById('productGrid');
+
   if (!grid) return;
 
   const search = document.getElementById('productSearch');
@@ -67,6 +365,7 @@
   if (!search || !sort || !empty || !categoryFilters) return;
 
   let activeCategory = 'all';
+
   let resultCount = document.getElementById('productResultCount');
 
   if (!resultCount) {
@@ -79,12 +378,15 @@
     grid.before(resultCount);
   }
 
+  // ===== ФИЛЬТРЫ =====
+
   categoryFilters.querySelectorAll('.category-filter').forEach(button => {
     button.addEventListener('click', () => {
       activeCategory = button.dataset.category || 'all';
 
       categoryFilters.querySelectorAll('.category-filter').forEach(item => {
         const selected = item === button;
+
         item.classList.toggle('active', selected);
         item.setAttribute('aria-pressed', String(selected));
       });
@@ -93,17 +395,11 @@
     });
   });
 
+  // ===== ИЗОБРАЖЕНИЯ =====
+
   function makeProductVisual(product) {
     const photo = document.createElement('div');
     photo.className = 'product-image';
-
-    photo.setAttribute('role', 'img');
-    photo.setAttribute(
-      'aria-label',
-      product.image
-        ? `Фото товара: ${product.name}`
-        : `Декоративная иллюстрация товара: ${product.name}`
-    );
 
     if (product.image) {
       const image = document.createElement('img');
@@ -114,11 +410,6 @@
 
       image.onerror = () => {
         photo.replaceChildren();
-        photo.removeAttribute('role');
-        photo.setAttribute(
-          'aria-label',
-          `Иллюстрация товара: ${product.name}`
-        );
         addFallbackVisual(photo, product);
       };
 
@@ -129,8 +420,10 @@
 
     if (product.isNew) {
       const badge = document.createElement('span');
+
       badge.className = 'product-badge';
       badge.textContent = 'Новинка';
+
       photo.append(badge);
     }
 
@@ -139,16 +432,80 @@
 
   function addFallbackVisual(photo, product) {
     const icon = document.createElement('span');
+
     icon.className = 'product-placeholder-icon';
     icon.setAttribute('aria-hidden', 'true');
     icon.textContent = categoryIcons[product.category] || '✦';
 
     const label = document.createElement('span');
+
     label.className = 'product-placeholder-label';
     label.textContent = 'ИЗОБРАЖЕНИЕ ТОВАРА';
 
     photo.append(icon, label);
   }
+
+  // ===== ЦЕНА ИЛИ УСЛОВИЕ ПОЛУЧЕНИЯ =====
+
+  function makeProductPrice(product) {
+    const price = document.createElement('div');
+    price.className = 'product-price';
+
+    if (product.displayPrice) {
+      const text = document.createElement('span');
+
+      text.textContent = product.displayPrice;
+      price.append(text);
+
+      return price;
+    }
+
+    const coin = document.createElement('img');
+
+    coin.src = 'images/tokcoin.webp';
+    coin.alt = '';
+    coin.setAttribute('aria-hidden', 'true');
+
+    coin.onerror = () => {
+      coin.hidden = true;
+    };
+
+    const text = document.createElement('span');
+
+    text.textContent =
+      `${new Intl.NumberFormat('ru-RU').format(product.price)} ТокКоинов`;
+
+    price.append(coin, text);
+
+    return price;
+  }
+
+  // ===== РАСКРЫВАЮЩИЙСЯ СПИСОК ИНТЕРЬЕРА =====
+
+  function makeProductDetails(product) {
+    if (!product.items || !product.items.length) return null;
+
+    const details = document.createElement('details');
+    details.className = 'product-details';
+
+    const summary = document.createElement('summary');
+    summary.textContent = 'Посмотреть предметы';
+
+    const list = document.createElement('ul');
+    list.className = 'product-details-list';
+
+    product.items.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.textContent = item;
+      list.append(listItem);
+    });
+
+    details.append(summary, list);
+
+    return details;
+  }
+
+  // ===== ОТОБРАЖЕНИЕ КАТАЛОГА =====
 
   function renderProducts() {
     const term = search.value.trim().toLocaleLowerCase('ru');
@@ -156,9 +513,12 @@
     let list = products
       .map((product, order) => ({ ...product, order }))
       .filter(product => {
-        const matchesSearch = product.name
-          .toLocaleLowerCase('ru')
-          .includes(term);
+        const searchableText = [
+          product.name,
+          ...(product.items || [])
+        ].join(' ').toLocaleLowerCase('ru');
+
+        const matchesSearch = searchableText.includes(term);
 
         const matchesCategory =
           activeCategory === 'all' ||
@@ -167,10 +527,24 @@
         return matchesSearch && matchesCategory;
       });
 
+    // Сортировка
+
     if (sort.value === 'asc') {
-      list.sort((a, b) => a.price - b.price || a.order - b.order);
+      list.sort((a, b) => {
+        if (a.price == null && b.price == null) return a.order - b.order;
+        if (a.price == null) return 1;
+        if (b.price == null) return -1;
+
+        return a.price - b.price || a.order - b.order;
+      });
     } else if (sort.value === 'desc') {
-      list.sort((a, b) => b.price - a.price || a.order - b.order);
+      list.sort((a, b) => {
+        if (a.price == null && b.price == null) return a.order - b.order;
+        if (a.price == null) return 1;
+        if (b.price == null) return -1;
+
+        return b.price - a.price || a.order - b.order;
+      });
     } else if (sort.value === 'name') {
       list.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
     }
@@ -181,6 +555,7 @@
 
     list.forEach(product => {
       const card = document.createElement('article');
+
       card.className = 'product-card';
 
       card.append(makeProductVisual(product));
@@ -188,23 +563,13 @@
       const title = document.createElement('h3');
       title.textContent = product.name;
 
-      const price = document.createElement('div');
-      price.className = 'product-price';
+      card.append(title, makeProductPrice(product));
 
-      const coin = document.createElement('img');
-      coin.src = 'images/tokcoin.webp';
-      coin.alt = '';
-      coin.setAttribute('aria-hidden', 'true');
-      coin.onerror = () => {
-        coin.hidden = true;
-      };
+      const details = makeProductDetails(product);
 
-      const priceText = document.createElement('span');
-      priceText.textContent =
-        `${new Intl.NumberFormat('ru-RU').format(product.price)} ТокКоинов`;
-
-      price.append(coin, priceText);
-      card.append(title, price);
+      if (details) {
+        card.append(details);
+      }
 
       fragment.append(card);
     });
