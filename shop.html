@@ -1,0 +1,108 @@
+<!doctype html>
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#170b2d" name="theme-color"/>
+<meta content="Магазинчик ТокКоинов — каталог призов проекта Аватарский KlipTok." name="description"/>
+<title>Магазин | ТокКоины</title>
+<link href="images/favicon.png" rel="icon" type="image/png"/>
+<link href="style.css" rel="stylesheet"/>
+<meta content="website" property="og:type"/>
+<meta content="Магазин | ТокКоины" property="og:title"/>
+<meta content="Магазинчик ТокКоинов — каталог призов проекта Аватарский KlipTok." property="og:description"/>
+<meta content="ru_RU" property="og:locale"/>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">Перейти к содержимому</a>
+<header class="site-header">
+<a aria-label="Аватарский KlipTok — главная" class="brand" href="index.html">
+<img alt="" class="brand-coin" src="images/tokcoin.webp"/>
+<span>Аватарский KlipTok | накопительная система</span>
+</a>
+<button aria-controls="siteNavigation" aria-expanded="false" class="menu-toggle" type="button">
+<span aria-hidden="true" class="menu-toggle-lines"></span><span class="menu-toggle-label">Меню</span>
+</button>
+<nav aria-label="Главное меню" class="main-nav" id="siteNavigation">
+<a href="index.html">Главная</a>
+<a href="earn.html">ТокКоины</a>
+<a aria-current="page" href="shop.html">Магазин</a>
+<a href="winners.html">Архив победителей</a>
+<a href="faq.html">FAQ</a>
+</nav>
+</header>
+<main id="mainContent">
+<section class="section section-alt" id="shop">
+<div class="section-heading">
+<span class="eyebrow">ОБМЕНИВАЙ НАКОПЛЕННОЕ</span>
+<h1>Ассортимент Магазинчика</h1>
+<p>Изучи ассортимент, сравни стоимость и выбери предмет, который хочешь получить за накопленные ТокКоины.</p>
+<a class="primary-btn" href="https://vk.ru/app7012806_-197208593" rel="noopener noreferrer" style="margin-top: 22px;" target="_blank">
+      Перейти в Магазинчик
+    </a>
+</div>
+<div class="info-panel catalog-guide">
+<h2>Как пользоваться каталогом</h2>
+<ol>
+<li>Найди предмет через поиск или выбери нужную коллекцию.</li>
+<li>Сравни стоимость и, если доступен список, посмотри состав набора.</li>
+<li>Нажми «Перейти в Магазинчик» и продолжи обмен в приложении.</li>
+</ol>
+<p class="small-note">Если на карточке вместо цены указано «Участие в конкурсах», это не фиксированная цена в ТокКоинах: способ получения связан с активностями проекта. Условия конкретной выдачи публикуются отдельно.</p>
+<p class="small-note">Каталог носит информационный характер. Перед обменом сверяй актуальную стоимость и доступность предмета в самом Магазинчике.</p>
+<p class="small-note purchase-policy">Важно: после отправки заявки на обмен отменить её нельзя. Если заявка заполнена неправильно, администрация вручную вернёт списанные ТокКоины.</p></div>
+<div class="catalog-tools">
+<label class="search-wrap">
+<span>⌕</span>
+<input aria-label="Поиск по названию товара" id="productSearch" placeholder="Поиск по названию товара…" type="search"/>
+</label>
+<label class="sort-wrap">
+<span>Сортировка</span>
+<select aria-label="Сортировка товаров" id="productSort">
+<option value="default">По умолчанию</option>
+<option value="asc">Сначала дешевле</option>
+<option value="desc">Сначала дороже</option>
+<option value="name">По алфавиту</option>
+</select>
+</label>
+</div>
+<!-- Категории товаров -->
+<div aria-label="Категории товаров" class="category-filters" id="categoryFilters">
+<button aria-pressed="true" class="category-filter active" data-category="all" type="button">Все товары</button>
+<button aria-pressed="false" class="category-filter" data-category="no-parties" type="button">Коллекция «No Parties»</button>
+<button aria-pressed="false" class="category-filter" data-category="kliptok" type="button">Коллекция «Клипток»</button>
+<button aria-pressed="false" class="category-filter" data-category="star-shine" type="button">Коллекция «Star Shine»</button>
+<button aria-pressed="false" class="category-filter" data-category="luvandi" type="button">Коллекция «Luvandi»</button>
+<button aria-pressed="false" class="category-filter" data-category="loser-core" type="button">Коллекция «Loser Core»</button>
+<button aria-pressed="false" class="category-filter" data-category="axel" type="button">Коллекция «Аксель»</button>
+<button aria-pressed="false" class="category-filter" data-category="furniture" type="button">Элементы мебели</button>
+<button aria-pressed="false" class="category-filter" data-category="clothes" type="button">Элементы одежды</button>
+<button aria-pressed="false" class="category-filter" data-category="unique" type="button">Прочее</button>
+</div>
+<div class="product-grid" id="productGrid"></div>
+<p class="empty-state" hidden="" id="emptyProducts">
+    Ничего не найдено. Попробуй изменить запрос или выбрать другую категорию.
+  </p>
+</section>
+</main>
+<div class="review-section">
+<a class="review-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdbyO5fSCXF_FYQUmtFA39SnMh6KTrtMJAvcfxBbM4fUZyJKw/viewform" rel="noopener noreferrer" target="_blank">
+    Оставить отзыв
+  </a>
+<p>Твоё мнение поможет нам стать лучше 💜</p>
+</div>
+<script defer="" src="script.js"></script>
+<footer class="site-footer">
+<div class="footer-inner">
+<a class="footer-brand" href="index.html">Аватарский KlipTok</a>
+<nav aria-label="Ссылки в подвале">
+<a href="earn.html">ТокКоины</a><a href="shop.html">Магазин</a><a href="winners.html">Победители</a><a href="faq.html">FAQ</a>
+</nav>
+<p>Фан-проект сообщества. Не является официальным продуктом игры «Аватария».</p>
+</div>
+</footer>
+</body>
+</html>

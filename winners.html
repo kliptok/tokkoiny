@@ -1,0 +1,829 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170b2d">
+  <meta name="description" content="Архив победителей накопительной системы ТокКоины проекта Аватарский KlipTok.">
+  <title>Архив победителей | ТокКоины</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .winner-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 25px 0 30px;
+    }
+
+    .winner-stat {
+      padding: 22px 18px;
+      text-align: center;
+      border: 1px solid rgba(180, 130, 255, .22);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .winner-stat-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted, #b9abc9);
+      font-size: 13px;
+    }
+
+    .winner-stat-value {
+      display: block;
+      color: #d4b5ff;
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .winner-stat-note {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted, #b9abc9);
+      font-size: 11px;
+    }
+
+    /* Две колонки архивов */
+    .archive-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+      width: 100%;
+    }
+
+    .archive-panel {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(180, 130, 255, .2);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .025);
+    }
+
+    .archive-panel-title {
+      margin: 0 0 14px;
+      color: #d4b5ff;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .archive-year {
+      margin-bottom: 10px;
+      border: 1px solid rgba(180, 130, 255, .2);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .025);
+    }
+
+    .archive-year > summary {
+      padding: 13px 14px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .archive-year > summary::-webkit-details-marker,
+    .archive-month > summary::-webkit-details-marker,
+    .archive-date > summary::-webkit-details-marker,
+    .archive-game > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .archive-year > summary::after {
+      content: "+";
+      color: #c49aff;
+      font-size: 20px;
+    }
+
+    .archive-year[open] > summary::after {
+      content: "−";
+    }
+
+    .archive-year-content {
+      padding: 0 10px 10px;
+    }
+
+    .archive-month {
+      margin-top: 7px;
+      border: 1px solid rgba(180, 130, 255, .14);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .02);
+    }
+
+    .archive-month > summary {
+      padding: 10px 12px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .archive-month[open] > summary {
+      color: #d4b5ff;
+      border-bottom: 1px solid rgba(180, 130, 255, .14);
+    }
+
+    .archive-month-content {
+      padding: 8px;
+    }
+
+    .archive-date {
+      margin-bottom: 7px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, .035);
+      overflow: hidden;
+    }
+
+    .archive-date:last-child {
+      margin-bottom: 0;
+    }
+
+    .archive-date > summary {
+      padding: 9px 10px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .archive-date[open] > summary {
+      color: #d4b5ff;
+    }
+
+    .archive-date-content {
+      padding: 0 10px 10px;
+    }
+
+    .archive-game {
+      margin-top: 7px;
+      padding: 9px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .archive-game > summary {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .winner-list {
+      padding-left: 20px;
+      margin: 9px 0 0;
+      font-size: 12px;
+    }
+
+    .winner-list li {
+      margin: 5px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .archive-message {
+      margin: 8px 0;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .archive-error {
+      color: #ffaaaa;
+    }
+
+    .archive-retry {
+      margin-top: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(180, 130, 255, .35);
+      border-radius: 8px;
+      background: rgba(180, 130, 255, .12);
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+    }
+
+
+
+    /* Топ-3 победителей игр */
+    .games-top3 {
+      margin: 0 0 24px;
+      padding: 13px;
+      border: 1px solid rgba(212, 181, 255, .24);
+      border-radius: 11px;
+      background: rgba(180, 130, 255, .055);
+    }
+
+    .games-top3-title {
+      margin: 0 0 10px;
+      color: #d4b5ff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .games-top3-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .games-top3-table th,
+    .games-top3-table td {
+      padding: 8px 6px;
+      text-align: left;
+      border-bottom: 1px solid rgba(180, 130, 255, .13);
+    }
+
+    .games-top3-table th {
+      color: var(--muted, #b9abc9);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .games-top3-table td:first-child,
+    .games-top3-table th:first-child {
+      width: 48px;
+      text-align: center;
+    }
+
+    .games-top3-table td:last-child,
+    .games-top3-table th:last-child {
+      width: 90px;
+      text-align: center;
+    }
+
+    .games-top3-table tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .games-top3-place {
+      color: #d4b5ff;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .archive-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-panel {
+        padding: 12px;
+      }
+
+      .archive-panel-title {
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .winner-stats {
+        gap: 9px;
+      }
+
+      .winner-stat {
+        padding: 17px 9px;
+      }
+
+      .winner-stat-label {
+        font-size: 11px;
+      }
+
+      .winner-stat-note {
+        font-size: 10px;
+      }
+    }
+  
+    /* Поиск и личная статистика */
+    .winner-search-card {
+      margin: 28px 0 22px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(212,181,255,.28);
+      border-radius: 20px;
+      background: radial-gradient(circle at 90% 0, rgba(168,85,247,.16), transparent 42%), rgba(255,255,255,.035);
+      box-shadow: 0 12px 38px rgba(0,0,0,.16);
+    }
+    .winner-search-card h2 { margin: 0 0 7px; font-size: clamp(20px,3vw,27px); }
+    .winner-search-card > p { margin: 0 0 17px; color: var(--muted); font-size: 13px; }
+    .winner-search-field { position: relative; display:flex; gap:10px; align-items:center; }
+    .winner-search-field input {
+      width:100%; min-width:0; padding:15px 16px 15px 44px; border-radius:12px;
+      border:1px solid rgba(212,181,255,.3); background:rgba(10,5,20,.55);
+      color:#fff; font:inherit; font-size:14px; outline:none;
+    }
+    .winner-search-field input:focus { border-color:#d4a5ff; box-shadow:0 0 0 3px rgba(168,85,247,.16); }
+    .winner-search-icon { position:absolute; left:15px; color:#c49aff; font-size:18px; pointer-events:none; }
+    .winner-search-hint { margin:9px 0 0; color:#a997ba; font-size:11px; }
+    .winner-search-results { margin-top:18px; }
+    .personal-summary {
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:14px 0 18px;
+    }
+    .personal-stat { padding:13px; border-radius:12px; background:rgba(168,85,247,.1); border:1px solid rgba(212,181,255,.16); }
+    .personal-stat strong { display:block; color:#e2c8ff; font-size:clamp(20px,3vw,27px); line-height:1.2; }
+    .personal-stat span { display:block; margin-top:5px; color:var(--muted); font-size:11px; }
+    .personal-results-list { display:grid; gap:8px; }
+    .personal-result {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      padding:12px 13px; border-radius:11px; background:rgba(255,255,255,.035);
+      border:1px solid rgba(212,181,255,.12); font-size:12px;
+    }
+    .personal-result-main { min-width:0; }
+    .personal-result-title { display:block; font-weight:800; color:#fff; overflow-wrap:anywhere; }
+    .personal-result-meta { display:block; margin-top:4px; color:var(--muted); }
+    .personal-result-reward { flex:0 0 auto; color:#e4c5ff; font-weight:800; text-align:right; white-space:nowrap; }
+    .personal-result a, .winner-list a { color:#e0bdff; text-decoration:none; overflow-wrap:anywhere; }
+    .personal-result a:hover, .winner-list a:hover { text-decoration:underline; }
+    .winner-tools { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0 0 13px; }
+    .winner-tools button, .winner-tools select {
+      min-height:37px; padding:8px 11px; border-radius:9px; border:1px solid rgba(212,181,255,.24);
+      background:rgba(255,255,255,.045); color:#f7efff; font:inherit; font-size:11px;
+    }
+    .winner-tools button { cursor:pointer; }
+    .winner-tools button:hover { border-color:#c49aff; background:rgba(168,85,247,.13); }
+    .winner-tools select option { background:#211331; color:#fff; }
+    .archive-toolbar { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:13px; }
+    .archive-toolbar button {
+      padding:7px 10px; border-radius:8px; border:1px solid rgba(212,181,255,.22);
+      background:rgba(168,85,247,.08); color:#e9d9ff; font:inherit; font-size:11px; cursor:pointer;
+    }
+    .archive-toolbar button:hover { background:rgba(168,85,247,.2); }
+    .archive-empty-filter { padding:14px; color:var(--muted); font-size:12px; text-align:center; }
+    .winner-list li { overflow-wrap:anywhere; }
+    @media(max-width:560px) {
+      .personal-summary { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+      .personal-stat { padding:10px 8px; }
+      .personal-stat span { font-size:10px; }
+      .personal-result { flex-direction:column; gap:5px; }
+      .personal-result-reward { text-align:left; }
+      .winner-search-field input { font-size:16px; }
+    }
+
+
+    .all-contests-section { margin: 22px 0 28px; }
+    .all-contests { border:1px solid rgba(212,181,255,.28); border-radius:15px; overflow:hidden; background:rgba(255,255,255,.025); }
+    .all-contests > summary { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px; cursor:pointer; list-style:none; font-weight:800; color:#f3d5ff; }
+    .all-contests > summary::-webkit-details-marker { display:none; }
+    .all-contests > summary:after { content:"＋"; color:#f28ce7; font-size:20px; }
+    .all-contests[open] > summary:after { content:"−"; }
+    .all-contests-hint { margin-left:auto; color:var(--muted); font-size:11px; font-weight:500; }
+    .all-contests-content { padding:0 14px 14px; }
+    .contest-group { margin-top:9px; border:1px solid rgba(180,130,255,.16); border-radius:10px; overflow:hidden; background:rgba(255,255,255,.02); }
+    .contest-group > summary { padding:12px 14px; cursor:pointer; font-size:13px; font-weight:700; }
+    .contest-group[open] > summary { color:#d4b5ff; }
+    .contest-group-content { padding:0 13px 12px; }
+    .contest-group-content .winner-list { margin-top:6px; }
+    .contest-group-meta { color:var(--muted); font-size:11px; margin:4px 0 8px; }
+    @media(max-width:520px) { .all-contests > summary { padding:15px 13px; font-size:13px; } .all-contests-hint { display:none; } }
+  </style>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Архив победителей | ТокКоины">
+  <meta property="og:description" content="Архив победителей накопительной системы ТокКоины проекта Аватарский KlipTok.">
+  <meta property="og:locale" content="ru_RU">
+</head>
+
+<body>
+<a class="skip-link" href="#mainContent">Перейти к содержимому</a>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Аватарский KlipTok — главная">
+    <img src="images/tokcoin.webp" alt="" class="brand-coin">
+    <span>Аватарский KlipTok | накопительная система</span>
+  </a>
+
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNavigation">
+    <span class="menu-toggle-lines" aria-hidden="true"></span>
+    <span class="menu-toggle-label">Меню</span>
+  </button>
+
+  <nav class="main-nav" id="siteNavigation" aria-label="Главное меню">
+    <a href="index.html">Главная</a>
+    <a href="earn.html">ТокКоины</a>
+    <a href="shop.html">Магазин</a>
+    <a href="winners.html" aria-current="page">Архив победителей</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+</header>
+
+<main id="mainContent">
+<section class="section" id="winners">
+
+  <div class="section-heading">
+    <span class="eyebrow">ТВОЯ УДАЧА РЯДОМ</span>
+    <h1>Архив победителей</h1>
+    <p>Проверь результаты, найди свои награждения и посмотри историю участия в активностях KlipTok.</p>
+  </div>
+
+  <div class="winner-stats" aria-live="polite">
+    <div class="winner-stat">
+      <span class="winner-stat-label">Всего выдано ТокКоинов</span>
+      <strong class="winner-stat-value" id="totalTokCoins">—</strong>
+      <span class="winner-stat-note">По данным опубликованных таблиц</span>
+    </div>
+    <div class="winner-stat">
+      <span class="winner-stat-label">Всего награждений</span>
+      <strong class="winner-stat-value" id="totalAwards">—</strong>
+      <span class="winner-stat-note">Каждая запись учитывается отдельно</span>
+    </div>
+    <div class="winner-stat">
+      <span class="winner-stat-label">Уникальных имён / ссылок</span>
+      <strong class="winner-stat-value" id="uniqueWinners">—</strong>
+      <span class="winner-stat-note">По имени или ссылке в архиве</span>
+    </div>
+    <div class="winner-stat">
+      <span class="winner-stat-label">Дней с результатами</span>
+      <strong class="winner-stat-value" id="resultDays">—</strong>
+      <span class="winner-stat-note">Даты, в которые опубликованы награды</span>
+    </div>
+  </div>
+
+  <section class="winner-search-card" aria-labelledby="winnerSearchTitle">
+    <h2 id="winnerSearchTitle">Найти свои победы</h2>
+    <p>Введи имя, VK ID или ссылку на профиль — покажем все совпадения в архивах игр и клипов.</p>
+    <div class="winner-search-field">
+      <span class="winner-search-icon" aria-hidden="true">⌕</span>
+      <input id="winnerSearchInput" type="search" autocomplete="off" placeholder="Например: id123456789 или имя участника" aria-label="Поиск победителя по имени, VK ID или ссылке">
+    </div>
+    <p class="winner-search-hint">Поиск учитывает данные, которые указаны в столбце «Победитель» подключённых таблиц.</p>
+    <div id="winnerSearchResults" class="winner-search-results" aria-live="polite"></div>
+  </section>
+
+  <div class="info-panel archive-guide">
+    <h2>Как пользоваться архивом</h2>
+    <ul>
+      <li>Используй поиск выше, чтобы сразу найти все свои награждения.</li>
+      <li>Или выбери год, месяц и категорию в нужном архиве.</li>
+      <li>Кнопки «Развернуть всё» и «Свернуть всё» помогут быстро просмотреть записи.</li>
+    </ul>
+    <p class="small-note">Архив загружает данные из опубликованных Google Таблиц. Если таблица временно недоступна, попробуй обновить страницу или нажми «Повторить загрузку».</p>
+  </div>
+
+  <div class="games-top3" id="gamesTop3">
+    <h4 class="games-top3-title">🏆 Топ-3 победителей игр</h4>
+    <p class="muted archive-message">Рейтинг формируется по количеству записанных побед в архиве игр. Если на третьем месте несколько участников с одинаковым результатом, в список включаются все участники с этим результатом.</p>
+  </div>
+
+  <div class="games-top3" id="clipsTop3">
+    <h4 class="games-top3-title">🎬 Топ-3 победителей по клипам</h4>
+    <p class="muted archive-message">Рейтинг формируется по сумме побед в категориях «Лайки» и «Комментарии».</p>
+    <p class="muted archive-message">Загружаем рейтинг клипов...</p>
+  </div>
+
+  <section class="all-contests-section" aria-labelledby="allContestsTitle">
+    <details class="all-contests" id="allContests">
+      <summary id="allContestsTitle"><span>🏅 Все конкурсы проекта</span><span class="all-contests-hint">Открыть список</span></summary>
+      <div id="allContestsContent"><p class="muted archive-message">Список конкурсов появится после загрузки архивов.</p></div>
+    </details>
+  </section>
+
+  <div class="archive-wrap">
+    <section class="archive-panel" aria-labelledby="gamesArchiveTitle">
+      <h3 class="archive-panel-title" id="gamesArchiveTitle">🎮 Победители игр</h3>
+      <div class="winner-tools">
+        <select id="gamesYearFilter" aria-label="Фильтр по году в архиве игр"><option value="">Все годы</option></select>
+        <select id="gamesMonthFilter" aria-label="Фильтр по месяцу в архиве игр"><option value="">Все месяцы</option></select>
+        <button type="button" data-expand="gamesArchive">Развернуть всё</button>
+        <button type="button" data-collapse="gamesArchive">Свернуть всё</button>
+      </div>
+      <div id="gamesArchive"><p class="muted archive-message">Загружаем архив игр...</p></div>
+    </section>
+
+    <section class="archive-panel" aria-labelledby="clipsArchiveTitle">
+      <h3 class="archive-panel-title" id="clipsArchiveTitle">🎬 Победители клипов</h3>
+      <div class="winner-tools">
+        <select id="clipsYearFilter" aria-label="Фильтр по году в архиве клипов"><option value="">Все годы</option></select>
+        <select id="clipsMonthFilter" aria-label="Фильтр по месяцу в архиве клипов"><option value="">Все месяцы</option></select>
+        <select id="clipsCategoryFilter" aria-label="Фильтр по категории клипов">
+          <option value="">Все категории</option>
+          <option value="like">Лайки</option>
+          <option value="comment">Комментарии</option>
+        </select>
+        <button type="button" data-expand="clipsArchive">Развернуть всё</button>
+        <button type="button" data-collapse="clipsArchive">Свернуть всё</button>
+      </div>
+      <div id="clipsArchive"><p class="muted archive-message">Загружаем архив клипов...</p></div>
+    </section>
+  </div>
+</section>
+</main>
+
+<script>
+const CLIPS_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdR5W64XF83bj3Aic7qbLRAdrNKaP1gvLb3LH-d4-aW0HXNgu2AsDQagOKABYvCrjJwbW7krVjMftj/pub?gid=0&single=true&output=csv";
+const GAMES_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdR5W64XF83bj3Aic7qbLRAdrNKaP1gvLb3LH-d4-aW0HXNgu2AsDQagOKABYvCrjJwbW7krVjMftj/pub?gid=382425294&single=true&output=csv";
+const MONTH_NAMES = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+const FIRST_YEAR = 2024;
+const FIRST_MONTH = 4;
+let clipRecords = [];
+let gameRecords = [];
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+function parseCSV(text) {
+  const rows=[]; let row=[]; let cell=""; let quoted=false;
+  for(let i=0;i<text.length;i++){
+    const char=text[i], next=text[i+1];
+    if(char === '"' && quoted && next === '"'){cell+='"';i++;}
+    else if(char === '"') quoted=!quoted;
+    else if(char === ',' && !quoted){row.push(cell.trim());cell='';}
+    else if((char==='\n'||char==='\r')&&!quoted){
+      if(char==='\r'&&next==='\n')i++;
+      row.push(cell.trim()); if(row.some(v=>v!==''))rows.push(row);
+      row=[];cell='';
+    } else cell+=char;
+  }
+  row.push(cell.trim()); if(row.some(v=>v!==''))rows.push(row);
+  return rows;
+}
+function normalizeHeader(value){return String(value||'').replace(/^\uFEFF/,'').trim().toLowerCase().replace(/ё/g,'е');}
+function parseDate(value){
+  const text=String(value||'').trim();
+  let m=text.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+  if(m){const day=+m[1],month=+m[2]-1,year=+m[3];if(month<0||month>11||day<1||day>new Date(year,month+1,0).getDate())return null;return{day,month,year};}
+  m=text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if(m){const year=+m[1],month=+m[2]-1,day=+m[3];if(month<0||month>11||day<1||day>new Date(year,month+1,0).getDate())return null;return{day,month,year};}
+  return null;
+}
+function formatDate(d){return String(d.day).padStart(2,'0')+'.'+String(d.month+1).padStart(2,'0')+'.'+d.year;}
+function dateKey(d){return d.year+'-'+String(d.month+1).padStart(2,'0')+'-'+String(d.day).padStart(2,'0');}
+function parseTokCoins(value){const cleaned=String(value||'').replace(/\s/g,'').replace(',','.').replace(/[^\d.-]/g,'');const amount=Number(cleaned);return Number.isFinite(amount)&&amount>0?amount:0;}
+function formatNumber(value){return new Intl.NumberFormat('ru-RU').format(value);}
+function isAllowedDate(date){
+  if(!date||date.year<FIRST_YEAR||(date.year===FIRST_YEAR&&date.month<FIRST_MONTH))return false;
+  const today=new Date();const recordDate=new Date(date.year,date.month,date.day);today.setHours(23,59,59,999);return recordDate<=today;
+}
+async function fetchSheet(url){
+  const response=await fetch(url,{cache:'no-store'});
+  if(!response.ok)throw new Error('Google Таблица ответила ошибкой: '+response.status);
+  const csv=await response.text();
+  if(!csv.trim()||csv.trim().startsWith('<!DOCTYPE'))throw new Error('Вместо CSV получен пустой ответ или HTML-страница.');
+  const rows=parseCSV(csv);if(!rows.length)throw new Error('Таблица не содержит данных.');return rows;
+}
+function findColumn(headers,names){return headers.findIndex(header=>names.includes(header));}
+function parseClips(rows){
+  const h=rows[0].map(normalizeHeader);
+  const di=findColumn(h,['дата клипа']),ci=findColumn(h,['категория']),wi=findColumn(h,['победитель']),ti=findColumn(h,['токкоины','количество токкоинов']);
+  if(di<0||ci<0||wi<0)throw new Error('В таблице клипов нужны столбцы: Дата клипа, Категория, Победитель.');
+  const out=[];
+  rows.slice(1).forEach(row=>{
+    const date=parseDate(row[di]),cat=normalizeHeader(row[ci]),winner=String(row[wi]||'').trim();
+    if(!date||!winner||!isAllowedDate(date))return;
+    let category=null;if(/^лайк(и|ов)?$/.test(cat))category='like';if(/^коммент(арий|арии|а|ов)?$/.test(cat))category='comment';
+    if(!category)return;
+    out.push({date,category,winner,tokCoins:ti<0?0:parseTokCoins(row[ti]),type:'clips'});
+  });
+  return out;
+}
+function parseGames(rows){
+  const h=rows[0].map(normalizeHeader);
+  const di=findColumn(h,['дата игры']),gi=findColumn(h,['название игры']),wi=findColumn(h,['победитель']),ti=findColumn(h,['токкоины','количество токкоинов']);
+  if(di<0||gi<0||wi<0||ti<0)throw new Error('В таблице игр нужны столбцы: Дата игры, Название игры, Победитель, ТокКоины.');
+  const out=[];
+  rows.slice(1).forEach(row=>{
+    const date=parseDate(row[di]),game=String(row[gi]||'').trim(),winner=String(row[wi]||'').trim();
+    if(!date||!game||!winner||!isAllowedDate(date))return;
+    out.push({date,game,winner,tokCoins:parseTokCoins(row[ti]),type:'games'});
+  });
+  return out;
+}
+function winnerSearchText(value){
+  return String(value||'').toLocaleLowerCase('ru-RU').replace(/ё/g,'е').replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/[^a-zа-яё0-9]/gi,'');
+}
+function winnerLink(value){
+  const text=String(value||'').trim();
+  const match=text.match(/https?:\/\/(?:www\.)?(?:vk\.ru|vk\.com)\/[^\s,;]+/i);
+  return match?match[0].replace(/[).]+$/,''):null;
+}
+function addWinnerName(parent,value){
+  const url=winnerLink(value);
+  if(url){const a=el('a','',value);a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.appendChild(a);}
+  else parent.textContent=value;
+}
+function allRecords(){return [...gameRecords,...clipRecords];}
+function groupByDate(records){
+  const years=new Map();
+  records.forEach(r=>{
+    const {year,month}=r.date;if(!years.has(year))years.set(year,new Map());
+    const months=years.get(year);if(!months.has(month))months.set(month,new Map());
+    const dates=months.get(month),key=dateKey(r.date);
+    if(!dates.has(key))dates.set(key,{date:r.date,records:[]});
+    dates.get(key).records.push(r);
+  });return years;
+}
+function makeWinnerList(records,showCoins){
+  const list=el('ul','winner-list');
+  records.forEach(record=>{
+    const li=el('li');
+    addWinnerName(li,record.winner);
+    if(showCoins&&record.tokCoins){li.appendChild(document.createTextNode(' — '+formatNumber(record.tokCoins)+' ТокКоинов'));}
+    list.appendChild(li);
+  });return list;
+}
+function renderTree(container,records,type){
+  container.replaceChildren();
+  if(!records.length){container.appendChild(el('p','muted archive-message','По выбранным фильтрам результатов нет.'));return;}
+  const years=groupByDate(records);
+  [...years.keys()].sort((a,b)=>b-a).forEach(year=>{
+    const yd=el('details','archive-year');yd.appendChild(el('summary','',year+' год'));
+    const yc=el('div','archive-year-content'),months=years.get(year);
+    [...months.keys()].sort((a,b)=>b-a).forEach(month=>{
+      const md=el('details','archive-month');md.appendChild(el('summary','',MONTH_NAMES[month]));
+      const mc=el('div','archive-month-content'),dates=months.get(month);
+      [...dates.values()].sort((a,b)=>b.date.day-a.date.day).forEach(group=>{
+        const dd=el('details','archive-date');dd.appendChild(el('summary','',formatDate(group.date)));
+        const dc=el('div','archive-date-content');
+        if(type==='clips'){
+          [['like','❤️ Победители среди поставивших лайк'],['comment','💬 Победители среди оставивших комментарий']].forEach(([cat,label])=>{
+            const subset=group.records.filter(r=>r.category===cat);
+            if(!subset.length)return;
+            const gd=el('details','archive-game');gd.appendChild(el('summary','',label));gd.appendChild(makeWinnerList(subset,false));dc.appendChild(gd);
+          });
+        }else{
+          const games=new Map();group.records.forEach(r=>{if(!games.has(r.game))games.set(r.game,[]);games.get(r.game).push(r);});
+          [...games.keys()].sort((a,b)=>a.localeCompare(b,'ru')).forEach(name=>{
+            const gd=el('details','archive-game');gd.appendChild(el('summary','',name));gd.appendChild(makeWinnerList(games.get(name),true));dc.appendChild(gd);
+          });
+        }
+        dd.appendChild(dc);mc.appendChild(dd);
+      });
+      md.appendChild(mc);yc.appendChild(md);
+    });
+    yd.appendChild(yc);container.appendChild(yd);
+  });
+}
+function renderGamesTop3(records){
+  const c=document.getElementById('gamesTop3');c.replaceChildren();
+  c.appendChild(el('h4','games-top3-title','🏆 Топ-3 победителей игр'));
+  c.appendChild(el('p','muted archive-message','Рейтинг считается по количеству записанных побед в архиве игр. При равенстве результатов на третьем месте показываются все участники с таким количеством побед.'));
+  if(!records.length){c.appendChild(el('p','muted archive-message','Пока нет данных для рейтинга.'));return;}
+  const people=new Map();
+  records.forEach(r=>{const key=winnerSearchText(r.winner);if(!people.has(key))people.set(key,{name:r.winner,wins:0});people.get(key).wins++;});
+  const sorted=[...people.values()].sort((a,b)=>b.wins-a.wins||a.name.localeCompare(b.name,'ru'));
+  const shown=sorted.filter((p,i)=>i<3||p.wins===sorted[2]?.wins);
+  const table=el('table','games-top3-table'),thead=el('thead'),hr=el('tr');
+  ['Место','Победитель','Количество побед'].forEach(x=>hr.appendChild(el('th','',x)));thead.appendChild(hr);table.appendChild(thead);
+  const tbody=el('tbody');let place=0,prev=null;
+  shown.forEach((p,i)=>{if(p.wins!==prev)place=i+1;prev=p.wins;const tr=el('tr'),medal=place===1?'🥇':place===2?'🥈':place===3?'🥉':String(place);tr.append(el('td','games-top3-place',medal));const name=el('td');addWinnerName(name,p.name);tr.append(name,el('td','',formatNumber(p.wins)));tbody.appendChild(tr);});
+  table.appendChild(tbody);c.appendChild(table);
+}
+
+function renderClipsTop3(records){
+  const c=document.getElementById('clipsTop3');c.replaceChildren();
+  c.appendChild(el('h4','games-top3-title','🎬 Топ-3 победителей по клипам'));
+  c.appendChild(el('p','muted archive-message','Рейтинг считается по общему количеству побед в категориях «Лайки» и «Комментарии». При равенстве на третьем месте показываются все участники с таким результатом.'));
+  if(!records.length){c.appendChild(el('p','muted archive-message','Пока нет данных для рейтинга.'));return;}
+  const people=new Map();
+  records.forEach(r=>{const key=winnerSearchText(r.winner);if(!people.has(key))people.set(key,{name:r.winner,wins:0});people.get(key).wins++;});
+  const sorted=[...people.values()].sort((a,b)=>b.wins-a.wins||a.name.localeCompare(b.name,'ru'));
+  const shown=sorted.filter((p,i)=>i<3||p.wins===sorted[2]?.wins);
+  const table=el('table','games-top3-table'),thead=el('thead'),hr=el('tr');
+  ['Место','Победитель','Побед в клипах'].forEach(x=>hr.appendChild(el('th','',x)));thead.appendChild(hr);table.appendChild(thead);
+  const tbody=el('tbody');let place=0,prev=null;
+  shown.forEach((p,i)=>{if(p.wins!==prev)place=i+1;prev=p.wins;const tr=el('tr'),medal=place===1?'🥇':place===2?'🥈':place===3?'🥉':String(place);tr.append(el('td','games-top3-place',medal));const name=el('td');addWinnerName(name,p.name);tr.append(name,el('td','',formatNumber(p.wins)));tbody.appendChild(tr);});
+  table.appendChild(tbody);c.appendChild(table);
+}
+function renderAllContests(){
+  const root=document.getElementById('allContestsContent');if(!root)return;root.replaceChildren();
+  const groups=new Map();
+  gameRecords.forEach(r=>{const key='Игра · '+r.game;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r);});
+  const clipLabels={like:'Клипы · Лайки',comment:'Клипы · Комментарии'};
+  clipRecords.forEach(r=>{const key=clipLabels[r.category]||'Клипы';if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r);});
+  if(!groups.size){
+    const empty=el('div','contest-empty-card');
+    empty.appendChild(el('div','contest-empty-icon','✦'));
+    const copy=el('div','contest-empty-copy');
+    copy.appendChild(el('span','contest-card-kicker','АРХИВ СООБЩЕСТВА'));
+    copy.appendChild(el('h3','','Здесь будут карточки конкурсов'));
+    copy.appendChild(el('p','','Пока архив пуст. Когда появятся опубликованные результаты, каждый конкурс будет оформлен отдельной карточкой с датами и списком победителей.'));
+    empty.appendChild(copy);
+    const tag=el('span','contest-empty-tag','СКОРО');empty.appendChild(tag);root.appendChild(empty);return;
+  }
+  const grid=el('div','contest-cards-grid');
+  [...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],'ru')).forEach(([name,records])=>{
+    const details=el('details','contest-card');
+    const summary=el('summary','contest-card-summary');
+    const icon=el('span','contest-card-icon',name.startsWith('Игра')?'🎮':'🎬');
+    const info=el('span','contest-card-info');
+    info.appendChild(el('span','contest-card-kicker','АРХИВ КОНКУРСОВ'));
+    info.appendChild(el('strong','',name.replace(/^Игра · /,'').replace(/^Клипы · /,'Клипы: ')));
+    info.appendChild(el('small','',formatNumber(records.length)+' результатов'));
+    const arrow=el('span','contest-card-arrow','＋');summary.append(icon,info,arrow);details.appendChild(summary);
+    const content=el('div','contest-group-content');
+    records.sort((a,b)=>dateKey(b.date).localeCompare(dateKey(a.date)));
+    const byDate=new Map();records.forEach(r=>{const key=dateKey(r.date);if(!byDate.has(key))byDate.set(key,[]);byDate.get(key).push(r);});
+    [...byDate.entries()].forEach(([key,items])=>{
+      const dateDetails=el('details','archive-date');dateDetails.appendChild(el('summary','',formatDate(items[0].date)));
+      const list=el('ul','winner-list');
+      items.forEach(r=>{const li=el('li');addWinnerName(li,r.winner);if(r.tokCoins)li.appendChild(document.createTextNode(' — '+formatNumber(r.tokCoins)+' ТокКоинов'));list.appendChild(li);});
+      dateDetails.appendChild(list);content.appendChild(dateDetails);
+    });
+    details.appendChild(content);grid.appendChild(details);
+  });
+  root.appendChild(grid);
+}
+function updateStatistics(){
+  const records=allRecords(),coins=records.reduce((s,r)=>s+(r.tokCoins||0),0);
+  const unique=new Set(records.map(r=>winnerSearchText(r.winner))).size;
+  const days=new Set(records.map(r=>dateKey(r.date))).size;
+  document.getElementById('totalTokCoins').textContent=formatNumber(coins);
+  document.getElementById('totalAwards').textContent=formatNumber(records.length);
+  document.getElementById('uniqueWinners').textContent=formatNumber(unique);
+  document.getElementById('resultDays').textContent=formatNumber(days);
+}
+function fillYearSelect(id,records){
+  const select=document.getElementById(id),old=select.value;
+  select.replaceChildren(new Option('Все годы',''));
+  [...new Set(records.map(r=>r.date.year))].sort((a,b)=>b-a).forEach(y=>select.add(new Option(y+' год',String(y))));
+  select.value=old;
+}
+function fillMonthSelect(id){
+  const select=document.getElementById(id),old=select.value;
+  select.replaceChildren(new Option('Все месяцы',''));
+  MONTH_NAMES.forEach((name,index)=>select.add(new Option(name,String(index))));
+  select.value=old;
+}
+function applyArchiveFilters(type){
+  const isGames=type==='games',records=isGames?gameRecords:clipRecords;
+  const year=document.getElementById(isGames?'gamesYearFilter':'clipsYearFilter').value;
+  const month=document.getElementById(isGames?'gamesMonthFilter':'clipsMonthFilter').value;
+  const category=isGames?'':document.getElementById('clipsCategoryFilter').value;
+  const filtered=records.filter(r=>(!year||String(r.date.year)===year)&&(!month||String(r.date.month)===month)&&(!category||r.category===category));
+  renderTree(document.getElementById(isGames?'gamesArchive':'clipsArchive'),filtered,type);
+}
+function expandArchive(id,open){
+  const root=document.getElementById(id);root.querySelectorAll('details').forEach(d=>d.open=open);
+}
+function renderPersonalSearch(){
+  const input=document.getElementById('winnerSearchInput'),box=document.getElementById('winnerSearchResults');
+  const raw=input.value.trim();box.replaceChildren();
+  if(!raw)return;
+  const query=winnerSearchText(raw);
+  if(query.length<2){box.appendChild(el('p','archive-message','Введи хотя бы два символа для поиска.'));return;}
+  const matches=allRecords().filter(r=>winnerSearchText(r.winner).includes(query));
+  if(!matches.length){box.appendChild(el('p','archive-message','Совпадений не найдено. Проверь написание имени, VK ID или ссылки.'));return;}
+  const coins=matches.reduce((s,r)=>s+(r.tokCoins||0),0);
+  const summary=el('div','personal-summary');
+  [[formatNumber(matches.length),'Награждений'],[formatNumber(coins),'ТокКоинов по архиву'],[formatNumber(new Set(matches.map(r=>dateKey(r.date))).size),'Дней с наградами']].forEach(([v,l])=>{const card=el('div','personal-stat');card.append(el('strong','',v),el('span','',l));summary.appendChild(card);});
+  box.appendChild(el('h3','','Результаты поиска'));box.appendChild(summary);
+  const list=el('div','personal-results-list');
+  matches.sort((a,b)=>dateKey(b.date).localeCompare(dateKey(a.date)));
+  matches.forEach(r=>{
+    const item=el('div','personal-result'),main=el('div','personal-result-main');
+    const title=el('span','personal-result-title');addWinnerName(title,r.winner);
+    const activity=r.type==='games'?'Игра: '+r.game:(r.category==='like'?'Лайк на клип':'Комментарий к клипу');
+    main.append(title,el('span','personal-result-meta',formatDate(r.date)+' · '+activity));
+    const reward=el('span','personal-result-reward',r.tokCoins?formatNumber(r.tokCoins)+' ТокКоинов':'Награда в таблице не указана');
+    item.append(main,reward);list.appendChild(item);
+  });
+  box.appendChild(list);
+}
+async function loadClips(){
+  const c=document.getElementById('clipsArchive');
+  try{clipRecords=parseClips(await fetchSheet(CLIPS_SHEET_URL));renderClipsTop3(clipRecords);fillYearSelect('clipsYearFilter',clipRecords);fillMonthSelect('clipsMonthFilter');applyArchiveFilters('clips');}
+  catch(e){console.error(e);c.replaceChildren(el('p','archive-message archive-error','Не удалось загрузить архив клипов: '+e.message));const b=el('button','archive-retry','Повторить загрузку');b.type='button';b.addEventListener('click',loadAll);c.appendChild(b);clipRecords=[];}
+}
+async function loadGames(){
+  const c=document.getElementById('gamesArchive');
+  try{gameRecords=parseGames(await fetchSheet(GAMES_SHEET_URL));renderGamesTop3(gameRecords);fillYearSelect('gamesYearFilter',gameRecords);fillMonthSelect('gamesMonthFilter');applyArchiveFilters('games');}
+  catch(e){console.error(e);c.replaceChildren(el('p','archive-message archive-error','Не удалось загрузить архив игр: '+e.message));const b=el('button','archive-retry','Повторить загрузку');b.type='button';b.addEventListener('click',loadAll);c.appendChild(b);gameRecords=[];}
+}
+async function loadAll(){
+  document.getElementById('totalTokCoins').textContent='…';
+  await Promise.all([loadClips(),loadGames()]);
+  renderAllContests();
+  updateStatistics();renderPersonalSearch();
+}
+document.getElementById('winnerSearchInput').addEventListener('input',renderPersonalSearch);
+document.getElementById('gamesYearFilter').addEventListener('change',()=>applyArchiveFilters('games'));
+document.getElementById('gamesMonthFilter').addEventListener('change',()=>applyArchiveFilters('games'));
+document.getElementById('clipsYearFilter').addEventListener('change',()=>applyArchiveFilters('clips'));
+document.getElementById('clipsMonthFilter').addEventListener('change',()=>applyArchiveFilters('clips'));
+document.getElementById('clipsCategoryFilter').addEventListener('change',()=>applyArchiveFilters('clips'));
+document.querySelectorAll('[data-expand]').forEach(b=>b.addEventListener('click',()=>expandArchive(b.dataset.expand,true)));
+document.querySelectorAll('[data-collapse]').forEach(b=>b.addEventListener('click',()=>expandArchive(b.dataset.collapse,false)));
+loadAll();
+</script>
+
+<script src="script.js" defer></script>
+  
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html">Аватарский KlipTok</a>
+    <nav aria-label="Ссылки в подвале">
+      <a href="earn.html">ТокКоины</a><a href="shop.html">Магазин</a><a href="winners.html">Победители</a><a href="faq.html">FAQ</a>
+    </nav>
+    <p>Фан-проект сообщества. Не является официальным продуктом игры «Аватария».</p>
+  </div>
+</footer>
+</body>
+</html>
