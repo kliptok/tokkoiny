@@ -684,7 +684,6 @@ function renderTree(container,records,type){
 function renderGamesTop3(records){
   const c=document.getElementById('gamesTop3');c.replaceChildren();
   c.appendChild(el('h4','games-top3-title','🏆 Топ-3 победителей среди игр'));
-  c.appendChild(el('p','muted archive-message','Рейтинг считается по количеству записанных побед в архиве игр. При равенстве результатов на третьем месте показываются все участники с таким количеством побед.'));
   if(!records.length){c.appendChild(el('p','muted archive-message','Пока нет данных для рейтинга.'));return;}
   const people=new Map();
   records.forEach(r=>{const key=winnerSearchText(r.winner);if(!people.has(key))people.set(key,{name:r.winner,wins:0});people.get(key).wins++;});
