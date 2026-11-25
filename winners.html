@@ -491,7 +491,6 @@
 
   <div class="games-top3" id="gamesTop3">
     <h4 class="games-top3-title">🏆 Топ-3 победителей игр</h4>
-    <p class="muted archive-message">Рейтинг формируется по количеству записанных побед в архиве игр. Если на третьем месте несколько участников с одинаковым результатом, в список включаются все участники с этим результатом.</p>
   </div>
 
   <div class="games-top3" id="clipsTop3">
@@ -687,7 +686,7 @@ function renderTree(container,records,type){
 }
 function renderGamesTop3(records){
   const c=document.getElementById('gamesTop3');c.replaceChildren();
-  c.appendChild(el('h4','games-top3-title','🏆 Топ-3 победителей игр'));
+  c.appendChild(el('h4','games-top3-title','🏆 Топ-3 победителей среди игр'));
   c.appendChild(el('p','muted archive-message','Рейтинг считается по количеству записанных побед в архиве игр. При равенстве результатов на третьем месте показываются все участники с таким количеством побед.'));
   if(!records.length){c.appendChild(el('p','muted archive-message','Пока нет данных для рейтинга.'));return;}
   const people=new Map();
