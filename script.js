@@ -84,7 +84,7 @@
     // ===== НОВИНКИ =====
     {
       name: 'Картина «GLAM»',
-      price: 666,
+      price: 613,
       image: 'images/Kartina3-converted-compressed.webp',
       category: 'furniture',
       isNew: true
@@ -105,24 +105,24 @@
     },
     {
       name: 'Эффект «Alter Axel»',
-      displayPrice: 'Участие в конкурсах',
+      displayPrice: 'Участие в активностях проекта',
       image: null,
       category: 'clothes',
       isNew: true
     },
 
     // ===== КОЛЛЕКЦИЯ «NO PARTIES» =====
-    { name: 'Шуба «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
-    { name: 'Очки «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
-    { name: 'Шапка «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
-    { name: 'Штаны «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
-    { name: 'Блузка «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
-    { name: 'Ботинки «No parties»', displayPrice: 'Участие в конкурсах', image: null, category: 'no-parties' },
+    { name: 'Шуба «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
+    { name: 'Очки «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
+    { name: 'Шапка «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
+    { name: 'Штаны «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
+    { name: 'Блузка «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
+    { name: 'Ботинки «No parties»', displayPrice: 'Участие в активностях проекта', image: null, category: 'no-parties' },
 
     // ===== КОЛЛЕКЦИЯ «КЛИПТОК» =====
     {
       name: 'Интерьер «Эй, Клипток!»',
-      displayPrice: 'Участие в конкурсах',
+      displayPrice: 'Участие в активностях проекта',
       image: null,
       category: 'kliptok',
       items: [
@@ -166,7 +166,7 @@
     },
     {
       name: 'Вывеска «Клипток»',
-      displayPrice: 'Участие в конкурсах',
+      displayPrice: 'Участие в активностях проекта',
       image: null,
       category: 'kliptok'
     },
@@ -182,7 +182,7 @@
     // ===== КОЛЛЕКЦИЯ «LUVANDI» =====
     {
       name: 'Интерьер «Luvandi»',
-      displayPrice: 'Участие в конкурсах',
+      displayPrice: 'Участие в активностях проекта',
       image: null,
       category: 'luvandi',
       items: [
@@ -206,42 +206,42 @@
         'Ёлка «Luvandi»'
       ]
     },
-    { name: 'Шапка «Luvandi»', displayPrice: 'Участие в конкурсах', image: null, category: 'luvandi' },
-    { name: 'Бенгальский огонь «Luvandi»', displayPrice: 'Участие в конкурсах', image: null, category: 'luvandi' },
+    { name: 'Шапка «Luvandi»', displayPrice: 'Участие в активностях проекта', image: null, category: 'luvandi' },
+    { name: 'Бенгальский огонь «Luvandi»', displayPrice: 'Участие в активностях проекта', image: null, category: 'luvandi' },
 
     // ===== КОЛЛЕКЦИЯ «LOSER CORE» =====
-    { name: 'Свитер «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
-    { name: 'Юбка «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
-    { name: 'Чулки «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
-    { name: 'Обувь «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
-    { name: 'Сумка «Loser Core»', displayPrice: 'Участие в конкурсах', image: null, category: 'loser-core' },
+    { name: 'Свитер «Loser Core»', displayPrice: 'Участие в активностях проекта', image: null, category: 'loser-core' },
+    { name: 'Юбка «Loser Core»', displayPrice: 'Участие в активностях проекта', image: null, category: 'loser-core' },
+    { name: 'Чулки «Loser Core»', displayPrice: 'Участие в активностях проекта', image: null, category: 'loser-core' },
+    { name: 'Обувь «Loser Core»', displayPrice: 'Участие в активностях проекта', image: null, category: 'loser-core' },
+    { name: 'Сумка «Loser Core»', displayPrice: 'Участие в активностях проекта', image: null, category: 'loser-core' },
 
     // ===== КОЛЛЕКЦИЯ «АКСЕЛЬ» =====
     { name: 'Наушники «Аксель»', price: 444, image: 'images/IMG_9314.webp', category: 'axel' },
-    { name: 'Худи «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
+    { name: 'Худи «Аксель»', displayPrice: 'Участие в активностях проекта', image: null, category: 'axel' },
     { name: 'Шапка «Аксель»', price: 333, image: 'images/IMG_9313.webp', category: 'axel' },
     { name: 'Светлая накидка «Аксель»', price: 449, image: 'images/IMG_9321.webp', category: 'axel' },
-    { name: 'Баллун «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
-    { name: 'Декор «Аксель»', displayPrice: 'Участие в конкурсах', image: null, category: 'axel' },
+    { name: 'Баллун «Аксель»', displayPrice: 'Участие в активностях проекта', image: null, category: 'axel' },
+    { name: 'Декор «Аксель»', displayPrice: 'Участие в активностях проекта', image: null, category: 'axel' },
     { name: 'Тёмная накидка «Аксель»', price: 449, image: 'images/IMG_9320.webp', category: 'axel' },
 
     // ===== ЭЛЕМЕНТЫ МЕБЕЛИ =====
-    { name: 'Авапака Мартин', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
-    { name: 'Кольцевая лампа', displayPrice: 'Участие в конкурсах', image: null, category: 'furniture' },
+    { name: 'Авапака Мартин', displayPrice: 'Участие в активностях проекта', image: null, category: 'furniture' },
+    { name: 'Кольцевая лампа', displayPrice: 'Участие в активностях проекта', image: null, category: 'furniture' },
 
     // ===== ЭЛЕМЕНТЫ ОДЕЖДЫ =====
-    { name: 'Майка «Bunt House»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
-    { name: 'Майка «TikTok»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Майка «Bunt House»', displayPrice: 'Участие в активностях проекта', image: null, category: 'clothes' },
+    { name: 'Майка «TikTok»', displayPrice: 'Участие в активностях проекта', image: null, category: 'clothes' },
     { name: 'Лонгслив «Крысиная любовь»', price: 450, image: 'images/IMG_9310.webp', category: 'clothes' },
-    { name: 'Костюм динозавра «Тренди»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Костюм динозавра «Тренди»', displayPrice: 'Участие в активностях проекта', image: null, category: 'clothes' },
     { name: 'Сумка доставщика «Onion»', price: 435, image: 'images/IMG_9312.webp', category: 'clothes' },
-    { name: 'Кот «Антон»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
-    { name: 'Пикми-палка «Гламур»', displayPrice: 'Участие в конкурсах', image: null, category: 'clothes' },
+    { name: 'Кот «Антон»', displayPrice: 'Участие в активностях проекта', image: null, category: 'clothes' },
+    { name: 'Пикми-палка «Гламур»', displayPrice: 'Участие в активностях проекта', image: null, category: 'clothes' },
 
     // ===== ПРОЧЕЕ =====
-    { name: 'Танец «swaga»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
-    { name: 'Граффити «Ну мы?»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
-    { name: 'Граффити «Покрысим?»', displayPrice: 'Участие в конкурсах', image: null, category: 'unique' },
+    { name: 'Танец «swaga»', displayPrice: 'Участие в активностях проекта', image: null, category: 'unique' },
+    { name: 'Граффити «Ну мы?»', displayPrice: 'Участие в активностях проекта', image: null, category: 'unique' },
+    { name: 'Граффити «Покрысим?»', displayPrice: 'Участие в активностях проекта', image: null, category: 'unique' },
     { name: 'Клипбокс', price: 599, image: 'images/IMG_9309.webp', category: 'unique' }
   ];
 
